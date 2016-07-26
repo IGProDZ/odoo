@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_l10n_fr_report_user,l10n_fr_report account user,model_l10n_fr_report,account.group_account_user,1,1,1,1
-access_l10n_fr_line_user,l10n_fr.l10n_fr_line_account user,model_l10n_fr_line,account.group_account_user,1,1,1,1
-access_sale_timbre,config.timbre,model_config_timbre,base.group_user,1,1,1,0
-access_sale_timbre,config.timbre,model_config_timbre,base.group_sale_salesman,1,1,1,0
-access_forme_juridique,forme.juridique,model_forme_juridique,base.group_user,1,1,1,0
