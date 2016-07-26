@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="True" id="sale.cash_receipt" model="account.voucher"
+             name="sale.cash_receipt" rml="addons/l10n_dz/reportgm/cash_receipt.rml" 
+             string="Reçu paiement" />
+        
+        <!-- 
+        <report auto="False" id="collection_docket" model="sale.order"
+             name="sale.collection_docket" rml="l10module/report/collection_docket.rml" 
+             string="Collection Docket" />
+         -->
+        
+                                                                                                        
+    </data>
+</openerp>

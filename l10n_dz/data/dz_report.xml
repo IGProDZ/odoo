@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data noupdate="0">
+
+    <record id="pcg_bilan" model="l10n.fr.report">
+      <field name="name">Bilan Comptable</field>
+      <field name="code">bilan</field>
+    </record>
+
+	 <record id="pcg_cdr" model="l10n.fr.report">
+      <field name="name">Compte de Résultat</field>
+      <field name="code">cdr</field>
+    </record>
+
+	<record id="pcg_tft" model="l10n.fr.report">
+      <field name="name">Tableau Flux de Trésorerie</field>
+      <field name="code">tft</field>
+    </record>
+<!--
+    <record id="pcg_cdr" model="l10n.fr.report">
+      <field name="name">Compte de Résultat</field>
+      <field name="code">cdr</field>
+    </record>
+
+	<record id="pcg_bal" model="l10n.fr.line">
+      <field name="name">bal</field>
+      <field name="definition">{'load':['+:2807:S','+:2907:S'], 'except':['','']}</field>
+      <field name="code">bal</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+-->
+
+	<!-- Actif -->
+
+	<record id="pcg_bal1b" model="l10n.fr.line">
+      <field name="name">Ecart d'acquisition (ou goodwill) - Brut</field>
+      <field name="definition">{'load':['+:207:S'], 'except':[]}</field>
+      <field name="code">bal1b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal1b2" model="l10n.fr.line">
+      <field name="name">Ecart d'acquisition (ou goodwill) - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:207:S'], 'except':[]}</field>
+      <field name="code">bal1b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal1ad" model="l10n.fr.line">
+      <field name="name">Ecart d'acquisition (ou goodwill) - Amort-Prov.</field>
+      <field name="definition">{'load':['+:2807:S','+:2907:S'], 'except':[]}</field>
+      <field name="code">bal1ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal1ad2" model="l10n.fr.line">
+      <field name="name">Ecart d'acquisition (ou goodwill) - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:2807:S','+:2907:S'], 'except':[]}</field>
+      <field name="code">bal1ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>    
+	<record id="pcg_bal2b" model="l10n.fr.line">
+      <field name="name">Immobilisations incorporelles - Brut</field>
+      <field name="definition">{'load':['+:20:S'], 'except':['207']}</field>
+      <field name="code">bal2b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal2b2" model="l10n.fr.line">
+      <field name="name">Immobilisations incorporelles - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:20:S'], 'except':['207']}</field>
+      <field name="code">bal2b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal2ap" model="l10n.fr.line">
+      <field name="name">Immobilisations incorporelles - Amort-Prov.</field>
+      <field name="definition">{'load':['+:280:S','+:290:S'], 'except':['2807','2907']}</field>
+      <field name="code">bal2ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal2ap2" model="l10n.fr.line">
+      <field name="name">Immobilisations incorporelles - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:280:S','+:290:S'], 'except':['2807','2907']}</field>
+      <field name="code">bal2ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal3b" model="l10n.fr.line">
+      <field name="name">Immobilisations corporelles - Brut</field>
+      <field name="definition">{'load':['+:21:S','+:22:S'], 'except':['229']}</field>
+      <field name="code">bal3b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal3b2" model="l10n.fr.line">
+      <field name="name">Immobilisations corporelles - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:21:S','+:22:S'], 'except':['229']}</field>
+      <field name="code">bal3b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal3ap" model="l10n.fr.line">
+      <field name="name">Immobilisations corporelles - Amort-Prov.</field>
+      <field name="definition">{'load':['+:281:S','+:282:S','+:291:S','+:292:S'], 'except':[]}</field>
+      <field name="code">bal3ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal3ap2" model="l10n.fr.line">
+      <field name="name">Immobilisations corporelles - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:281:S','+:282:S','+:291:S','+:292:S'], 'except':[]}</field>
+      <field name="code">bal3ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal4b" model="l10n.fr.line">
+      <field name="name">Immobilisations encours - Brut</field>
+      <field name="definition">{'load':['+:23:S'], 'except':[]}</field>
+      <field name="code">bal4b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal4b2" model="l10n.fr.line">
+      <field name="name">Immobilisations encours - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:23:S'], 'except':[]}</field>
+      <field name="code">bal4b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal4ap" model="l10n.fr.line">
+      <field name="name">Immobilisations encours - Amort-Prov.</field>
+      <field name="definition">{'load':['+:293:S'], 'except':[]}</field>
+      <field name="code">bal4ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal4ap2" model="l10n.fr.line">
+      <field name="name">Immobilisations encours - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:293:S'], 'except':[]}</field>
+      <field name="code">bal4ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal5b" model="l10n.fr.line">
+      <field name="name">Titres mis en équivalance - entreprises associées - Brut</field>
+      <field name="definition">{'load':['+:265:S'], 'except':[]}</field>
+      <field name="code">bal5b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal5b2" model="l10n.fr.line">
+      <field name="name">Titres mis en équivalance - entreprises associées - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:265:S'], 'except':[]}</field>
+      <field name="code">bal5b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal5ap" model="l10n.fr.line">
+      <field name="name">Titres mis en équivalance - entreprises associées - Amort-Prov.</field>
+      <field name="definition">{'load':['+:2965:S'], 'except':[]}</field>
+      <field name="code">bal5ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal5ap2" model="l10n.fr.line">
+      <field name="name">Titres mis en équivalance - entreprises associées - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load':['+:2965:S'], 'except':[]}</field>
+      <field name="code">bal5ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>    
+	<record id="pcg_bal6b" model="l10n.fr.line">
+      <field name="name">Autres participations et créances rattachées - Brut</field>
+      <field name="definition">{'load':['+:26:S'], 'except':['265','269']}</field>
+      <field name="code">bal6b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal6b2" model="l10n.fr.line">
+      <field name="name">Autres participations et créances rattachées - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:26:S'], 'except':['265','269']}</field>
+      <field name="code">bal6b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal6ap" model="l10n.fr.line">
+      <field name="name">Autres participations et créances rattachées - Amort-Prov.</field>
+      <field name="definition">{'load':['+:296:S'], 'except':['2965','2969']}</field>
+      <field name="code">bal6ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal6ap2" model="l10n.fr.line">
+      <field name="name">Autres participations et créances rattachées - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load':['+:296:S'], 'except':['2965','2969']}</field>
+      <field name="code">bal6ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal7b" model="l10n.fr.line">
+      <field name="name">Autres titres immobilisés - Brut</field>
+      <field name="definition">{'load':['+:271:S','+:272:S','+:273:S'], 'except':[]}</field>
+      <field name="code">bal7b</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>	
+	<record id="pcg_bal7b2" model="l10n.fr.line">
+      <field name="name">Autres titres immobilisés - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:271:S','+:272:S','+:273:S'], 'except':[]}</field>
+      <field name="code">bal7b2</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>
+	<record id="pcg_bal7ap" model="l10n.fr.line">
+      <field name="name">Autres titres immobilisés - Amort-Prov.</field>
+      <field name="definition">{'load':['+:2971:S','+:2972:S','+:2973:S'], 'except':[]}</field>
+      <field name="code">bal7ap</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>
+	<record id="pcg_bal7ap2" model="l10n.fr.line">
+      <field name="name">Autres titres immobilisés - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load':['+:2971:S','+:2972:S','+:2973:S'], 'except':[]}</field>
+      <field name="code">bal7ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>	
+	<record id="pcg_bal8b" model="l10n.fr.line">
+      <field name="name">Prêts et autres actifs financiers non courants - Brut</field>
+      <field name="definition">{'load':['+:274:S','+:275:S','+:276:S'], 'except':[]}</field>
+      <field name="code">bal8b</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>	
+	<record id="pcg_bal8b2" model="l10n.fr.line">
+      <field name="name">Prêts et autres actifs financiers non courants - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:274:S','+:275:S','+:276:S'], 'except':[]}</field>
+      <field name="code">bal8b2</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>
+	<record id="pcg_bal8ap" model="l10n.fr.line">
+      <field name="name">Prêts et autres actifs financiers non courants - Amort-Prov.</field>
+      <field name="definition">{'load':['+:2974:S','+:2975:S','+:2976:S'], 'except':[]}</field>
+      <field name="code">bal8ap</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>	
+	<record id="pcg_bal8ap2" model="l10n.fr.line">
+      <field name="name">Prêts et autres actifs financiers non courants - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load':['+:2974:S','+:2975:S','+:2976:S'], 'except':[]}</field>
+      <field name="code">bal8ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>	
+	<record id="pcg_bal8b22" model="l10n.fr.line">
+      <field name="name">Impôts différés actif - Brut</field>
+      <field name="definition">{'load':['+:133:S'], 'except':[]}</field>
+      <field name="code">bal8b22</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal8b222" model="l10n.fr.line">
+      <field name="name">Impôts différés actif - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:133:S'], 'except':[]}</field>
+      <field name="code">bal8b222</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal9b" model="l10n.fr.line">
+      <field name="name">Stocks et encours - Brut</field>
+      <field name="definition">{'load':['+:30:S','+:31:S','+:32:S','+:33:S','+:34:S','+:35:S','+:36:S','+:37:S','+:38:S'], 'except':[]}</field>
+      <field name="code">bal9b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal9b2" model="l10n.fr.line">
+      <field name="name">Stocks et encours - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:30:S','+:31:S','+:32:S','+:33:S','+:34:S','+:35:S','+:36:S','+:37:S','+:38:S'], 'except':[]}</field>
+      <field name="code">bal9b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal9ap" model="l10n.fr.line">
+      <field name="name">Stocks et encours - Amort-Prov.</field>
+      <field name="definition">{'load':['+:39:S'], 'except':[]}</field>
+      <field name="code">bal9ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal9ap2" model="l10n.fr.line">
+      <field name="name">Stocks et encours - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:39:S'], 'except':[]}</field>
+      <field name="code">bal9ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal10b" model="l10n.fr.line">
+      <field name="name">Clients - Brut</field>
+      <field name="definition">{'load':['+:41:S'], 'except':['419']}</field>
+      <field name="code">bal10b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal10b2" model="l10n.fr.line">
+      <field name="name">Clients - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:41:S'], 'except':['419']}</field>
+      <field name="code">bal10b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal10ap" model="l10n.fr.line">
+      <field name="name">Clients - Amort-Prov.</field>
+      <field name="definition">{'load':['+:491:S'], 'except':[]}</field>
+      <field name="code">bal10ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal10ap2" model="l10n.fr.line">
+      <field name="name">Clients - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:491:S'], 'except':[]}</field>
+      <field name="code">bal10ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal11b" model="l10n.fr.line">
+      <field name="name">Autres débiteur - Brut</field>
+      <field name="definition">{'load':['+:409:S','+:421:SD','+:422:SD','+:423:SD','+:425:SD','+:426:SD','+:427:SD','+:428:SD','+:431:SD','+:432:SD','+:438:SD','+:441:SD','+:442:SD','+:443:SD','+:451:SD','+:455:SD','+:456:SD','+:457:SD','+:458:SD','+:462:SD','+:464:SD','+:465:SD','+:467:SD','+:468:SD','+:486:SD','+:489:SD','+:47:SD'], 'except':[]}</field>	  
+	  <field name="code">bal11b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal11b2" model="l10n.fr.line">
+      <field name="name">Autres débiteur - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:409:S','+:421:SD','+:422:SD','+:423:SD','+:425:SD','+:426:SD','+:427:SD','+:428:SD','+:431:SD','+:432:SD','+:438:SD','+:441:SD','+:442:SD','+:443:SD','+:451:SD','+:455:SD','+:456:SD','+:457:SD','+:458:SD','+:462:SD','+:464:SD','+:465:SD','+:467:SD','+:468:SD','+:486:SD','+:489:SD','+:47:SD'], 'except':[]}</field>	  
+	  <field name="code">bal11b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal11ap" model="l10n.fr.line">
+      <field name="name">Autres debiteur - Amort-Prov.</field>
+      <field name="definition">{'load':['+:495:S','+:496:S'], 'except':[]}</field>
+      <field name="code">bal11ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal11ap2" model="l10n.fr.line">
+      <field name="name">Autres debiteur - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:495:S','+:496:S'], 'except':[]}</field>
+      <field name="code">bal11ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal12b" model="l10n.fr.line">
+      <field name="name">Impôts - Brut</field>
+      <field name="definition">{'load':['+:444:SD','+:445:SD','+:447:SD'], 'except':[]}</field>
+      <field name="code">bal12b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal12b2" model="l10n.fr.line">
+      <field name="name">Impôts - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:444:SD','+:445:SD','+:447:SD'], 'except':[]}</field>
+      <field name="code">bal12b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal13b" model="l10n.fr.line">
+      <field name="name">Autres actifs courants - Brut</field>
+      <field name="definition">{'load':['+:481:SD','+:482:SD','+:483:SD','+:484:SD','+:485:SD','+:487:SD','+:488:SD'], 'except':[]}</field>
+      <field name="code">bal13b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal13b2" model="l10n.fr.line">
+      <field name="name">Autres actifs courants - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:481:SD','+:482:SD','+:483:SD','+:484:SD','+:485:SD','+:487:SD','+:488:SD'], 'except':[]}</field>
+      <field name="code">bal13b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal14b" model="l10n.fr.line">
+      <field name="name">Placements et autres actifs financiers courants - Brut</field>
+      <field name="definition">{'load':['+:50:S'], 'except':['509']}</field>
+      <field name="code">bal14b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal14b2" model="l10n.fr.line">
+      <field name="name">Placements et autres actifs financiers courants - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:50:S'], 'except':['509']}</field>
+      <field name="code">bal14b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal15b" model="l10n.fr.line">
+      <field name="name">Trésorerie - Brut</field>
+      <field name="definition">{'load':['+:519:Dr','+:51:SD','+:52:SD','+:53:SD','+:54:SD','+:58:SD'], 'except':[]}</field>
+      <field name="code">bal15b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal15b2" model="l10n.fr.line">
+      <field name="name">Trésorerie - Brut (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:519:Dr','+:51:SD','+:52:SD','+:53:SD','+:54:SD','+:58:SD'], 'except':[]}</field>
+      <field name="code">bal15b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bal15ap" model="l10n.fr.line">
+      <field name="name">Trésorerie - Amort-Prov.</field>
+      <field name="definition">{'load':['+:59:S'], 'except':[]}</field>
+      <field name="code">bal15ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bal15ap2" model="l10n.fr.line">
+      <field name="name">Trésorerie - Amort-Prov. (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:59:S'], 'except':[]}</field>
+      <field name="code">bal15ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	
+<!-- Passif -->
+
+	<record id="pcg_bpl1" model="l10n.fr.line">
+      <field name="name">Capital émis (ou compte de l'exploitant)</field>
+      <field name="definition">{'load':['+:101:S','+:108:S'], 'except':[]}</field>
+      <field name="code">bpl1</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl2" model="l10n.fr.line">
+      <field name="name">Capital non appelé</field>
+      <field name="definition">{'load':['+:109:S'], 'except':[]}</field>
+      <field name="code">bpl2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl3" model="l10n.fr.line">
+      <field name="name">Primes et réserves(Réserves consolidées(1))</field>
+      <field name="definition">{'load':['+:104:S','+:106:S'], 'except':[]}</field>
+      <field name="code">bpl3</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl4" model="l10n.fr.line">
+      <field name="name">Ecart de réévaluation</field>
+      <field name="definition">{'load':['+:105:S'], 'except':[]}</field>
+      <field name="code">bpl4</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl5" model="l10n.fr.line">
+      <field name="name">Ecart d'équivalence(1)</field>
+      <field name="definition">{'load':['+:107:S'], 'except':[]}</field>
+      <field name="code">bpl5</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl61" model="l10n.fr.line">
+      <field name="name">Résultat net (Résultat net part du groupe)(1)</field>
+      <field name="definition">{'load':['+:70:S','+:71:S','+:72:S','+:73:S','+:74:S','+:75:S','+:76:S','+:77:S','+:78:S','+:79:S'], 'except':[]}</field>
+      <field name="code">bpl61</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl62" model="l10n.fr.line">
+      <field name="name">Résultat net (Résultat net part du groupe)(1)</field>
+      <field name="definition">{'load':['+:60:S','+:61:S','+:62:S','+:63:S','+:64:S','+:65:S','+:66:S','+:67:S','+:68:S','+:69:S'], 'except':[]}</field>
+      <field name="code">bpl62</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bpl710" model="l10n.fr.line">
+      <field name="name">Autres capitaux propres</field>
+      <field name="definition">{'load':['+:102:S'], 'except':[]}</field>
+      <field name="code">bpl710</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl720" model="l10n.fr.line">
+      <field name="name">Report à nouveau</field>
+      <field name="definition">{'load':['+:11:S','+:18:S'], 'except':[]}</field>
+      <field name="code">bpl720</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_bpl8" model="l10n.fr.line">
+      <field name="name">Emprunts et dettes financières</field>
+      <field name="definition">{'load':['+:16:S','+:17:S'], 'except':[]}</field>
+      <field name="code">bpl8</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl9" model="l10n.fr.line">
+      <field name="name">Impôts(différés et provisionnés)</field>
+      <field name="definition">{'load':['+:134:S','+:155:S'], 'except':[]}</field>
+      <field name="code">bpl9</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl10" model="l10n.fr.line">
+      <field name="name">Autres dettes non courantes</field>
+      <field name="definition">{'load':['+:229:S'], 'except':[]}</field>
+      <field name="code">bpl10</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl11" model="l10n.fr.line">
+      <field name="name">Provisions et produits comptabilisés d'avance</field>
+      <field name="definition">{'load':['+:155:S'], 'except':[]}</field>
+      <field name="code">bpl11</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl12" model="l10n.fr.line">
+      <field name="name">Fournisseurs et comptes rattachés</field>
+      <field name="definition">{'load':['+:40:S'], 'except':['409']}</field>
+      <field name="code">bpl12</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl13" model="l10n.fr.line">
+      <field name="name">Impôts</field>
+      <field name="definition">{'load':['+:444:SC','+:445:SC','+:447:SC'], 'except':[]}</field>
+      <field name="code">bpl13</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl14" model="l10n.fr.line">
+      <field name="name">Autres dettes</field>
+      <field name="definition">{'load':['+:419:SC','+:509:SC','+:42:SC','+:43:SC','+:441:SC','+:442:SC','+:443:SC','+:448:SC','+:449:SC','+:45:SC','+:46:SC','+:47:SC','+:48:SC'], 'except':[]}</field>       		
+      <field name="code">bpl14</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_bpl15" model="l10n.fr.line">
+      <field name="name">Trésorerie Passif</field>
+      <field name="definition">{'load':['+:519:SC','+:511:SC','+:512:SC','+:513:SC','+:514:SC','+:515:SC','+:516:SC','+:517:SC','+:518:SC','+:52:SC','+:54:SC','+:58:SC'], 'except':[]}</field>
+      <field name="code">bpl15</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_cr1" model="l10n.fr.line">
+      <field name="name">Ventes et produits annexes</field>
+      <field name="definition">{'load':['+:70:S'], 'except':[]}</field>
+      <field name="code">cr1</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr2" model="l10n.fr.line">
+      <field name="name">Variation stocks produits finis et en cours</field>
+      <field name="definition">{'load':['+:72:S'], 'except':[]}</field>
+      <field name="code">cr2</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr3" model="l10n.fr.line">
+      <field name="name">Production immobilisée</field>
+      <field name="definition">{'load':['+:73:S'], 'except':[]}</field>
+      <field name="code">cr3</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr4" model="l10n.fr.line">
+      <field name="name">Subventions d'exploitation</field>
+      <field name="definition">{'load':['+:74:S'], 'except':[]}</field>
+      <field name="code">cr4</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr5" model="l10n.fr.line">
+      <field name="name">Achats consommés</field>
+      <field name="definition">{'load':['+:60:S'], 'except':[]}</field>
+      <field name="code">cr5</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr6" model="l10n.fr.line">
+      <field name="name">Services exterieurs et autres consommations</field>
+      <field name="definition">{'load':['+:61:S','+:62:S'], 'except':[]}</field>
+      <field name="code">cr6</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr7" model="l10n.fr.line">
+      <field name="name">Charges de personnel</field>
+      <field name="definition">{'load':['+:63:S'], 'except':[]}</field>
+      <field name="code">cr7</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr8" model="l10n.fr.line">
+      <field name="name">Impôts, taxes et versements assimilés</field>
+      <field name="definition">{'load':['+:64:S'], 'except':[]}</field>
+      <field name="code">cr8</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr9" model="l10n.fr.line">
+      <field name="name">Autres produits opérationnels</field>
+      <field name="definition">{'load':['+:75:S'], 'except':[]}</field>
+      <field name="code">cr9</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr10" model="l10n.fr.line">
+      <field name="name">Autres charges opérationnelles</field>
+      <field name="definition">{'load':['+:65:S'], 'except':[]}</field>
+      <field name="code">cr10</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr11" model="l10n.fr.line">
+      <field name="name">Dotations aux amortissements, provisions et pertes de valeur</field>
+      <field name="definition">{'load':['+:68:S'], 'except':[]}</field>
+      <field name="code">cr11</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr12" model="l10n.fr.line">
+      <field name="name">Reprise sur pertes de valeur et provisions</field>
+      <field name="definition">{'load':['+:78:S'], 'except':[]}</field>
+      <field name="code">cr12</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr13" model="l10n.fr.line">
+      <field name="name">Produits financiers</field>
+      <field name="definition">{'load':['+:76:S'], 'except':[]}</field>
+      <field name="code">cr13</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr14" model="l10n.fr.line">
+      <field name="name">Charges financières</field>
+      <field name="definition">{'load':['+:66:S'], 'except':[]}</field>
+      <field name="code">cr14</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr15" model="l10n.fr.line">
+      <field name="name">Impôts exigibles sur résultats ordinaires</field>
+      <field name="definition">{'load':['+:695:S','+:698:S'], 'except':[]}</field>
+      <field name="code">cr15</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr16" model="l10n.fr.line">
+      <field name="name">Impôts différés (Variations) sur résultats ordinaires</field>
+      <field name="definition">{'load':['+:692:S','+:693:S'], 'except':[]}</field>
+      <field name="code">cr16</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr17" model="l10n.fr.line">
+      <field name="name">Eléments extraordinaires (produits) (à préciser)</field>
+      <field name="definition">{'load':['+:77:S'], 'except':[]}</field>
+      <field name="code">cr17</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+	<record id="pcg_cr18" model="l10n.fr.line">
+      <field name="name">Eléments extraordinaires (charges) (à préciser)</field>
+      <field name="definition">{'load':['+:67:S'], 'except':[]}</field>
+      <field name="code">cr18</field>
+      <field name="report_id" ref="pcg_cdr"/>
+    </record>
+
+	<!-- TFT -->
+
+	<record id="pcg_tft1b" model="l10n.fr.line">
+      <field name="name">Résultat net de l'exercice</field>
+      <field name="definition">{'load':['-:7:S','-:6:S'], 'except':[]}</field>
+      <field name="code">tft1b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft1b2" model="l10n.fr.line">
+      <field name="name">Résultat net de l'exercice (N-1)</field>
+      <field name="definition">{'load_prev_year':['-:7:S','-:6:S'], 'except':[]}</field>
+      <field name="code">tft1b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft1ad" model="l10n.fr.line">
+      <field name="name">Ajustements pour Amortissements et provisions</field>
+      <field name="definition">{'load':['+:68:D','+:78:D'], 'except':[]}</field>
+      <field name="code">tft1ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft1ad2" model="l10n.fr.line">
+      <field name="name">Ajustements pour Amortissements et provisions (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:68:D','+:78:D'], 'except':[]}</field>
+      <field name="code">tft1ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>    
+	<record id="pcg_tft2b" model="l10n.fr.line">
+      <field name="name">Ajustements pour Variation des Impôts Différés</field>
+      <field name="definition">{'load':['+:692:D','+:693:D'], 'except':[]}</field>
+      <field name="code">tft2b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft2b2" model="l10n.fr.line">
+      <field name="name">Ajustements pour Variation des Impôts Différés (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:692:D','+:693:D'], 'except':[]}</field>
+      <field name="code">tft2b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft2ap" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation des stocks</field>
+      <field name="definition">{'load':['+:30:C','+:31:C','+:32:C','+:33:C','+:34:C','+:35:C','+:36:C','+:37:C','+:38:C'], 'except':[]}</field>
+      <field name="code">tft2ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft2ap2" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation des stocks (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:30:C','+:31:C','+:32:C','+:33:C','+:34:C','+:35:C','+:36:C','+:37:C','+:38:C'], 'except':[]}</field>
+      <field name="code">tft2ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft3b" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation des clients et autres créances</field>
+      <field name="definition">{'load':['+:41:Dr'], 'except':[]}</field>
+      <field name="code">tft3b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft3b2" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation des clients et autres créances (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:41:Dr'], 'except':[]}</field>
+      <field name="code">tft3b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft3ap" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation des fournisseurs et autres dettes</field>
+      <field name="definition">{'load':['+:400:D','+:401:D','+:402:D','+:403:D','+:406:D','+:407:D','+:408:D','+:409:D','+:42:D','+:43:D','+:44:D'], 'except':[]}</field>
+      <field name="code">tft3ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft3ap2" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation des fournisseurs et autres dettes (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:400:D','+:401:D','+:402:D','+:403:D','+:406:D','+:407:D','+:408:D','+:409:D','+:42:D','+:43:D','+:44:D'], 'except':[]}</field>
+      <field name="code">tft3ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft33ap" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation débiteurs et créditeurs divers</field>
+      <field name="definition">{'load':['+:42:S','+:43:S','+:44:S','+:45:S','+:47:S','+:48:S'], 'except':[]}</field>
+      <field name="code">tft33ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft33ap2" model="l10n.fr.line">
+      <field name="name">Ajustements pour variation débiteurs et créditeurs divers (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:42:S','+:43:S','+:44:S','+:45:S','+:47:S','+:48:S'], 'except':[]}</field>
+      <field name="code">tft33ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft4b" model="l10n.fr.line">
+      <field name="name">Ajustements pour Plus ou moins-values de cessions, nettes d'impôts</field>
+      <field name="definition">{'load':['+:752:C','+:652:C'], 'except':[]}</field>
+      <field name="code">tft4b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft4b2" model="l10n.fr.line">
+      <field name="name">Ajustements pour Plus ou moins-values de cessions, nettes d'impôts (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:752:C','+:652:C'], 'except':[]}</field>
+      <field name="code">tft4b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft4ap" model="l10n.fr.line">
+      <field name="name">Décaissements sur acquisition d'immobilisations</field>
+      <field name="definition">{'load':['+:404:MVM5','+:405:MVM5','+:20:MVMD5','+:21:MVMD5','+:22:MVMD5','+:23:MVMD5','+:24:MVMD5','+:25:MVMD5','+:26:MVMD5','+:27:MVMD5','+:464:MVMD5'], 'except':[]}</field>
+      <field name="code">tft4ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft4ap2" model="l10n.fr.line">
+      <field name="name">Décaissements sur acquisition d'immobilisations (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:404:MVM5','+:405:MVM5','+:20:MVMD5','+:21:MVMD5','+:22:MVMD5','+:23:MVMD5','+:24:MVMD5','+:25:MVMD5','+:26:MVMD5','+:27:MVMD5','+:464:MVMD5'], 'except':[]}</field>
+      <field name="code">tft4ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft5b" model="l10n.fr.line">
+      <field name="name">Encaissements sur cessions d'immobilisations</field>
+      <field name="definition">{'load':['+:20:MVMC5','+:21:MVMC5','+:22:MVMC5','+:23:MVMC5','+:24:MVMC5','+:25:MVMC5','+:26:MVMC5','+:27:MVMC5','+:462:MVMC5','+:465:MVMC5','+:28:MVM5'], 'except':[]}</field>
+      <field name="code">tft5b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft5b2" model="l10n.fr.line">
+      <field name="name">Encaissements sur cessions d'immobilisations (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:20:MVMC5','+:21:MVMC5','+:22:MVMC5','+:23:MVMC5','+:24:MVMC5','+:25:MVMC5','+:26:MVMC5','+:27:MVMC5','+:462:MVMC5','+:465:MVMC5','+:28:MVM5'], 'except':[]}</field>
+      <field name="code">tft5b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft5ap" model="l10n.fr.line">
+      <field name="name">Incidence des variations de périmètre de consolidation</field>
+      <field name="definition">{'load':['+:2965:S'], 'except':[]}</field>
+      <field name="code">tft5ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft5ap2" model="l10n.fr.line">
+      <field name="name">Incidence des variations de périmètre de consolidation (N-1)</field>
+      <field name="definition">{'load':['+:2965:S'], 'except':[]}</field>
+      <field name="code">tft5ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>    
+	<record id="pcg_tft6b" model="l10n.fr.line">
+      <field name="name">Dividendes versés aux actionnaires</field>
+      <field name="definition">{'load':['+:457:MVMD5'], 'except':[]}</field>
+      <field name="code">tft6b</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft6b2" model="l10n.fr.line">
+      <field name="name">Dividendes versés aux actionnaires (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:457:MVMD5'], 'except':[]}</field>
+      <field name="code">tft6b2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft6ap" model="l10n.fr.line">
+      <field name="name">Augmentation de capital en numéraire</field>
+      <field name="definition">{'load':['+:10:MVMC5'], 'except':[]}</field>
+      <field name="code">tft6ap</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>
+	<record id="pcg_tft6ap2" model="l10n.fr.line">
+      <field name="name">Augmentation de capital en numéraire (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:10:MVMC5'], 'except':[]}</field>
+      <field name="code">tft6ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft7b" model="l10n.fr.line">
+      <field name="name">Emission d'emprunts</field>
+      <field name="definition">{'load':['+:16:MVMC5','+:17:MVMC5','+:18:MVMC5','+:450:MVMC5','+:451:MVMC5','+:452:MVMC5','+:453:MVMC5','+:454:MVMC5','+:455:MVMC5','+:456:MVMC5','+:458:MVMC5','+:459:MVMC5'], 'except':[]}</field>
+      <field name="code">tft7b</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>	
+	<record id="pcg_tft7b2" model="l10n.fr.line">
+      <field name="name">Emission d'emprunts (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:16:MVMC5','+:17:MVMC5','+:18:MVMC5','+:450:MVMC5','+:451:MVMC5','+:452:MVMC5','+:453:MVMC5','+:454:MVMC5','+:455:MVMC5','+:456:MVMC5','+:458:MVMC5','+:459:MVMC5'], 'except':[]}</field>
+      <field name="code">tft7b2</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>
+	<record id="pcg_tft7ap" model="l10n.fr.line">
+      <field name="name">Remboursements d'emprunts</field>
+      <field name="definition">{'load':['+:16:MVMD5','+:17:MVMD5','+:18:MVMD5','+:450:MVMD5','+:451:MVMD5','+:452:MVMD5','+:453:MVMD5','+:454:MVMD5','+:455:MVMD5','+:456:MVMD5','+:458:MVMD5','+:459:MVMD5'], 'except':[]}</field>
+      <field name="code">tft7ap</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>
+	<record id="pcg_tft7ap2" model="l10n.fr.line">
+      <field name="name">Remboursements d'emprunts (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:16:MVMD5','+:17:MVMD5','+:18:MVMD5','+:450:MVMD5','+:451:MVMD5','+:452:MVMD5','+:453:MVMD5','+:454:MVMD5','+:455:MVMD5','+:456:MVMD5','+:458:MVMD5','+:459:MVMD5'], 'except':[]}</field>
+      <field name="code">tft7ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>  
+    </record>	
+	<record id="pcg_tft8b" model="l10n.fr.line">
+      <field name="name">Trésorerie d'ouverture</field>
+      <field name="definition">{'load':['+:51:S','+:52:S','+:53:S','+:54:S','+:58:S'], 'except':[]}</field>
+      <field name="code">tft8b</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>	
+	<record id="pcg_tft8b2" model="l10n.fr.line">
+      <field name="name">Trésorerie d'ouverture (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:51:S','+:52:S','+:53:S','+:54:S','+:58:S'], 'except':[]}</field>
+      <field name="code">tft8b2</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>
+	<record id="pcg_tft8ap" model="l10n.fr.line">
+      <field name="name">Trésorerie de clôture</field>
+      <field name="definition">{'load':['+:51:S','+:52:S','+:53:S','+:54:S','+:58:S'], 'except':[]}</field>
+      <field name="code">tft8ap</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>	
+	<record id="pcg_tft8ap2" model="l10n.fr.line">
+      <field name="name">Trésorerie de clôture (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:51:S','+:52:S','+:53:S','+:54:S','+:58:S'], 'except':[]}</field>
+      <field name="code">tft8ap2</field>
+      <field name="report_id" ref="pcg_bilan"/>    
+    </record>	
+	<record id="pcg_tft8b22" model="l10n.fr.line">
+      <field name="name">Incidence de variation de cours de devises (1)</field>
+      <field name="definition">{'load':['+:133:S'], 'except':[]}</field>
+      <field name="code">tft8b22</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+	<record id="pcg_tft8b222" model="l10n.fr.line">
+      <field name="name">Incidence de variation de cours de devises (1) (N-1)</field>
+      <field name="definition">{'load_prev_year':['+:133:S'], 'except':[]}</field>
+      <field name="code">tft8b222</field>
+      <field name="report_id" ref="pcg_bilan"/>
+    </record>	
+  
+  <menuitem parent="account.menu_finance_legal_statement" id="final_accounting_reportsfr" name="Rapports SCF"/>
+
+        <menuitem icon="STOCK_PRINT" name="Bilan Algerien" action="l10n_dz.action_account_bilan_report" id="menu_account_report_bsfr" parent="final_accounting_reportsfr"/>
+   
+        <menuitem icon="STOCK_PRINT" name="Compte de resultats" action="l10n_dz.action_account_cdr_report" id="menu_account_result_bsfr" parent="final_accounting_reportsfr"/>
+
+        <menuitem icon="STOCK_PRINT" name="T. Flux de Trésorerie" action="l10n_dz.action_account_tft_report" id="menu_account_tft_bsfr" parent="final_accounting_reportsfr"/>
+
+  </data>
+</openerp>
+

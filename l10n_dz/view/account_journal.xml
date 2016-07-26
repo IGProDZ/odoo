@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+
+        <record id="timbre_view_journal_form" model="ir.ui.view">
+            <field name="name">timbre_account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="timbre_id" attrs="{'invisible': [('type', '!=', 'cash')]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

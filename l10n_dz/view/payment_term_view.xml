@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="account_view_payment_term_form_dz" model="ir.ui.view">
+        <field name="name">account.payment.term.view_payment_term_form_dz</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="payment_type"/>
+            </field>
+        </field>
+    </record>
+    <menuitem action="account.action_payment_term_form" id="account.menu_action_payment_term_form" groups="account.group_account_manager" parent="account.menu_configuration_misc" />
+  </data>
+</openerp>

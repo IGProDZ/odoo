@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+
+    <template id="report_invoice_document_custum" inherit_id="account.report_invoice_document">
+      <xpath expr="//address[@t-field='o.partner_id'][1]" position="after">
+	<div style="line-height: 50%;">
+	  <p>RC N°:
+	  <span t-field="o.partner_id.rc" style="text-align:left"/></p>
+	  <p>A.I :
+	  <span t-field="o.partner_id.ai" style="text-align:left"/></p>
+	  <p>N.I.F :
+	  <span t-field="o.partner_id.nif" style="text-align:left"/></p>
+	  <p>N.I.S :
+	  <span t-field="o.partner_id.nis" style="text-align:left"/></p>
+	</div>
+      </xpath>
+
+      <xpath expr="//tbody[1]/tr/td[5]" position="replace">
+        <td>
+	  <span t-field="l.invoice_line_tax_id.description"/>
+	</td>
+      </xpath>
+
+      <xpath expr="//div[@class='row mt32 mb32'][1]" position="inside">
+	<div class="col-xs-2" t-if="o.payment_term.payment_type">
+	  <strong>Règlement:</strong>
+	  <p t-field="o.payment_term.payment_type" style="text-align:left"/>
+	</div>
+      </xpath>
+
+      <xpath expr="//p[@t-if='o.payment_term.note']" position="replace">
+	<div class="col-xs-8 pull-left" >
+	  <div style="padding-left:5px;">
+
+	<strong>Conditions de Règlement:</strong>
+	<span t-field="o.payment_term.note"/>
+	  </div>
+	</div>
+      </xpath>
+
+      <xpath expr="//div[@class='col-xs-4 pull-right']" position="after">
+      	<div class="col-xs-6 pull-left">
+	  <table class="table table-condensed">
+	    <thead>
+	      <tr>
+		<th>Tax</th>
+		<th class="text-right">Base</th>
+		<th class="text-right">Amount</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr t-foreach="o.tax_line" t-as="t">
+		<td><span t-field="t.name"/></td>
+		<td class="text-right">
+		  <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+		</td>
+		<td class="text-right">
+		  <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+		</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+    </xpath>
+
+    <xpath expr="//div[@class='col-xs-6']" position="replace">
+      </xpath>
+
+      <xpath expr="//p[@t-if='o.comment']" position="before">
+	<div class="col-xs-8 pull-left" >
+	  <div style="padding-left:5px;">
+	    <strong t-if="o.state not in ['draft','sent']">Arrêtée la présente facture à la somme de:</strong>
+	    <strong t-if="o.state in ['draft','sent']">Arrêtée la présente proforma à la somme de:</strong>
+	    <p t-field="o.text_amount"/>
+	  </div>
+	</div>
+      </xpath>
+
+      <xpath expr="//p[@t-if='o.comment']" position="before">
+	<div class="col-xs-8 pull-left" >
+	    <table class="table table-condensed">
+	    <thead>
+	      <tr>
+		<th>Paiement en espèces</th>
+		<th class="text-right">Timbre</th>
+		<th class="text-right">Total</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	<td><span>Droits au profit du trésor</span></td>
+		<td class="text-right">
+		  <span t-field="o.amount_timbre" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+		</td>
+		<td class="text-right">
+		  <span t-field="o.total_timbre" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+		</td>
+	    </tbody>
+	  </table>
+	</div>
+
+	  <!-- <div t-if="o.payment_term.payment_type not in ['terme']" style="padding-left:5px;"> -->
+	  <!--   <strong>En cas de paiement en espèces, le montant dû est de </strong><span t-field="o.total_timbre" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/><strong> dont </strong><span t-field="o.amount_timbre" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/><strong> de droits de timbre </strong> -->
+	  <!-- </div> -->
+      </xpath>
+
+
+      </template>
+  </data>
+</openerp>

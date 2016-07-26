@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <!-- 1-ajout de nis,ai,frmjuri
+              2-appel de methode:change footer :l10n_dz.py(def onchange_footerdz)
+              3-changement label pour :company_registry+vat
+              4- deplacement country+state
+              -->
+        <record id="res_company_form_l10n_dz" model="ir.ui.view">
+            <field name="name">res.company.form.l10n.dz</field>
+            <field name="model">res.company</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+            <data>
+
+	      <xpath expr="//field[@name='phone']" position="attributes">
+		<attribute name = "on_change">onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, bank_ids)</attribute>
+	      </xpath>
+	      <xpath expr="//field[@name='fax']" position="attributes">
+		<attribute name = "on_change">onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, bank_ids)</attribute>
+	      </xpath>
+
+
+	      <xpath expr="//field[@name='company_registry']" position="attributes">
+		<attribute name = "on_change">onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, bank_ids)</attribute>
+	      </xpath>
+
+                 <xpath expr="//field[@name='company_registry']" position="after">
+                    <!--field name="rc"/-->
+		    <field name="ai"    on_change="onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, bank_ids)"/>
+		    <field name="nif"  on_change="onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, bank_ids)"/>
+                    <field name="nis"   on_change="onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, bank_ids)"  />
+
+                    <field name="frmjuri"  />
+		    <field name="capital_social" widget='monetary'  on_change="onchange_footerdz(custom_footer, phone, fax,ai,nis, email, website, nif, company_registry, capital_social, capital_social, bank_ids)" options="{'currency_field': 'currency_id'}"/>
+                 </xpath>
+                   <field name="country_id" position="replace">
+                   </field>
+                   <field name="street2" position="after">
+					<field name="country_id" placeholder="Pays" class="oe_no_button" options='{"no_open": True}' on_change="on_change_country(country_id)"/>
+					</field>
+					<xpath expr="//field[@name='state_id']" position="replace">
+					<field name="state_id" class="oe_no_button" placeholder="Wilaya" style="width: 24%%" options='{"no_open": True}'/>
+					</xpath>
+					<xpath expr="//field[@name='state_id']" position="after">
+					<field name="commune_id" class="oe_no_button" placeholder="Commune" style="width: 37%%" options='{"no_open": True}' domain="[('state_id', '=', state_id)]"/>
+					</xpath>
+
+            </data>
+            </field>
+        </record>
+                 <!-- 1-ajout rc,nif,ai,nis,
+                      2-deplacement champs:  country+state+filtre -->
+
+        <record id="res_partner_form_l10n_dz" model="ir.ui.view">
+            <field name="name">res.partner.form.l10n.dz</field>
+            <field name="model">res.partner</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/>
+            <field name="arch" type="xml">
+            <data>
+                 <xpath expr="//field[@name='property_account_position']" position="after">
+                    <field name="rc" attrs="{'required': [('is_company','=',True)]}"/>
+                    <field name="nif"/>
+                 </xpath>
+                 <xpath expr="//field[@name='last_reconciliation_date']" position="before">
+                    <field name="ai" attrs="{'required': [('is_company','=',True)]}"/>
+                    <field name="nis"/>
+                 </xpath>
+
+					<field name="country_id" position="replace">
+					</field>
+					<field name="street2" position="after">
+					<field name="country_id" placeholder="Pays" class="oe_no_button" options='{"no_open": True}' attrs="{'readonly': [('use_parent_address','=',True)]}"/>
+					</field>
+					<xpath expr="//field[@name='state_id']" position="replace">
+					<field name="state_id" class="oe_no_button" placeholder="Wilaya" style="width: 37%%" options='{"no_open": True}' on_change="onchange_state(state_id)" attrs="{'readonly': [('use_parent_address','=',True)]}" domain="[('country_id', '=', country_id)]"/>
+					</xpath>
+					<xpath expr="//field[@name='state_id']" position="after">
+					<field name="commune_id" class="oe_no_button" placeholder="Commune" style="width: 37%%" options='{"no_open": True}' attrs="{'readonly': [('use_parent_address','=',True)]}" domain="[('state_id', '=', state_id)]"/>
+					</xpath>
+
+
+
+            </data>
+            </field>
+        </record>
+          <!-- forme juridique pour vue partner visible ssi partner== company -->
+       <record id="res_partner_form_l10n_dz_frmjuri" model="ir.ui.view">
+            <field name="name">res.partner.form.l10n.dz_frmjuri</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            <data>
+                 <field name="phone" position="before">
+                    <field name="frmjuri" attrs="{'invisible': [('is_company','=', False)]}"/>
+                 </field>
+            </data>
+            </field>
+        </record>
+         <record id="invoice_supplier_form_dz" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.formdz</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='move_id']" position="after">
+                    <field name="dmb" />
+                </xpath>
+            </data>
+            </field>
+        </record>
+        <!-- traduction purchase -->
+        <!--  <delete id="base.menu_purchase_root" model="ir.ui.menu"/> -->
+
+      <!--    <menuitem name="Achats"
+           id="base.menu_purchase_root"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            sequence="60"/>-->
+
+
+    </data>
+</openerp>
