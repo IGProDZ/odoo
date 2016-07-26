@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="account.account_invoices" model="account.invoice" name="account.invoice"
+                rml="addons/l10n_dz/report/account_print_invoice_dz.rml" string="Invoices"
+                usage="default"/>
+    </data>
+</openerp>

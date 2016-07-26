@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="sale.report_sale_order" model="sale.order" name="sale.order"
+                rml="addons/l10n_dz/report/sale_order_dz.rml" string="Quotation / Order"
+                usage="default"/>
+    </data>
+</openerp>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="stock.report_picking_list" model="stock.picking" name="stock.picking.list" string="Picking Slip" rml="addons/l10n_dz/report/picking_dz.rml"/>
+        <report id="stock.report_picking_list_in" model="stock.picking.in" name="stock.picking.list.in" string="Receipt Slip" rml="addons/l10n_dz/report/picking_dz.rml"/>
+        <report id="stock.report_picking_list_out" model="stock.picking.out" name="stock.picking.list.out" string="Delivery Slip" rml="addons/l10n_dz/report/picking_dz.rml"/>
+    </data>
+</openerp>
